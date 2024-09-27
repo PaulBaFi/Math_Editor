@@ -1,16 +1,86 @@
 ---
-
+import GridLayout from "@/layouts/GridLayout.astro";
+import Aside from "@/sections/Aside.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<GridLayout>
+  <div id="global-grid" class="gap-3 p-3 h-screen bg-brands-medium">
+    <div class="bg-brands-light">
+      <Aside />
+    </div>
+    <main id="main-grid">
+      <div class="bg-brands-light">Editor</div>
+      <div class="gutter-col gutter-col-1"></div>
+      <div id="aside-grid">
+        <div class="bg-brands-light">Segunda vista</div>
+        <div class="gutter-row gutter-row-1"></div>
+        <div class="bg-brands-light">extension</div>
+      </div>
+    </main>
+  </div>
+</GridLayout>
+
+<style>
+  #global-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+  }
+
+  #main-grid {
+    display: grid;
+    grid-template-columns: 1fr 10px 380px;
+  }
+
+  #aside-grid {
+    display: grid;
+    grid-template-rows: 1fr 10px 1fr;
+  }
+
+  #main-grid > div,
+  #aside-grid > div {
+    overflow: hidden;
+  }
+
+  .gutter-col {
+    grid-row: 1/-1;
+    cursor: col-resize;
+    background-image: url("https://split.js.org/vertical.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .gutter-col-1 {
+    grid-column: 2;
+  }
+
+  .gutter-row {
+    grid-column: 1/-1;
+    cursor: row-resize;
+    background-image: url("https://split.js.org/horizontal.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .gutter-row-1 {
+    grid-row: 2;
+  }
+</style>
+
+<script>
+  import Split from "split-grid";
+
+  Split({
+    columnGutters: [
+      {
+        track: 1,
+        element: document.querySelector(".gutter-col-1"),
+      },
+    ],
+    rowGutters: [
+      {
+        track: 1,
+        element: document.querySelector(".gutter-row-1"),
+      },
+    ],
+  });
+</script>
