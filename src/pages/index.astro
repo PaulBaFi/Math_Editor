@@ -1,20 +1,22 @@
 ---
 import GridLayout from "@/layouts/GridLayout.astro";
 import Aside from "@/sections/Aside.astro";
+import Editor from "@/sections/Editor.astro";
+import Others from "@/sections/Others.astro";
 ---
 
 <GridLayout>
   <div id="global-grid" class="gap-3 p-3 h-screen bg-brands-medium">
-    <div class="bg-brands-light">
-      <Aside />
-    </div>
+    <Aside />
     <main id="main-grid">
-      <div class="bg-brands-light">Editor</div>
+      <Editor />
       <div class="gutter-col gutter-col-1"></div>
       <div id="aside-grid">
         <div class="bg-brands-light">Segunda vista</div>
         <div class="gutter-row gutter-row-1"></div>
-        <div class="bg-brands-light">extension</div>
+        <div>
+          <Others />
+        </div>
       </div>
     </main>
   </div>
