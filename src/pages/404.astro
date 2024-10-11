@@ -1,0 +1,30 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+---
+
+<html lang="es">
+  <BaseHead title="Página no encontrada" />
+  <body>
+    <div class="w-full h-fit px-3 my-10 text-center">
+      <h1 class="text-9xl">404</h1>
+      <b class="uppercase text-2xl font-light tracking-wider"
+        >Página no encontrada</b
+      >
+      <img
+        src="/images/this-is-fine.gif"
+        alt="This is fine gif"
+        width="250"
+        height="auto"
+        class="mx-auto my-8"
+      />
+      <div class="space-y-3 flex flex-col">
+        <p>Intenta regresar a la página principal</p>
+        <a
+          href="/"
+          class="text-zinc-50 bg-black mx-auto w-fit py-1 px-5 rounded"
+          >Volver</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

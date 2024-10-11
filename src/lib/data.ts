@@ -294,12 +294,6 @@ export const algebraSymbols: SymbolGroup[] = [
 
 // Geometry Symbols
 export const geometrySymbols: SymbolGroup[] = [
-  { title: "Ángulo", symbol: "∠" },
-  { title: "Perpendicular", symbol: "⊥" },
-  { title: "Paralelo", symbol: "∥" },
-  { title: "Infinito", symbol: "∞" },
-  { title: "Ángulo nulo", symbol: "∅" },
-  { title: "Composición de funciones", symbol: "∘" },
   { title: "Seno", symbol: "sin" },
   { title: "Coseno", symbol: "cos" },
   { title: "Tangente", symbol: "tan" },

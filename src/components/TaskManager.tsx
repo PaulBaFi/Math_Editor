@@ -67,6 +67,7 @@ export default function TaskManager() {
   const [secondTaskId, setSecondTaskId] = useState<number | null>(null);
   const [secondTaskContent, setSecondTaskContent] = useState("");
   const [splitExpanded, setSplitExpanded] = useState(true);
+  const [isGreaterThanMd, setIsGreaterThanMd] = useState(false);
 
   const taskListRef = useRef<HTMLUListElement>(null);
   const taskTitleEditorRef = useRef<HTMLInputElement>(null);
@@ -76,6 +77,16 @@ export default function TaskManager() {
 
   useEffect(() => {
     loadTasks();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsGreaterThanMd(window.innerWidth >= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const loadTasks = () => {
@@ -247,16 +258,17 @@ export default function TaskManager() {
         </div>
       </dialog>
 
-      <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] p-3 pt-14 md:pt-3 gap-3 h-full md:h-screen max-h-full w-full text-zinc-800 bg-brands-medium">
+      <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] p-3 pt-14 md:pt-3 gap-3 min-h-screen w-full text-zinc-800 bg-brands-medium">
         <nav
-          className={`absolute top-3 z-10 md:relative flex flex-col justify-between bg-brands-medium transition-all h-full pr-1 pb-3 ${
-            splitExpanded ? "w-[250px]" : "w-0 md:w-7"
+          className={`absolute left-0 top-0 z-10 md:relative flex flex-col justify-between bg-brands-medium transition-all h-full pr-1 pb-3 ${
+            splitExpanded ? "w-[250px] p-3" : "w-0 md:w-7 p-0"
           }`}
         >
           <button
             title={`${splitExpanded ? "Ocultar" : "Mostrar"} el menú lateral`}
             onClick={() => setSplitExpanded((toggle) => !toggle)}
-            className="text-zinc-800 bg-brands-light hover:bg-zinc-200 mb-8 w-8 px-2 py-1 rounded-md space-x-2"
+            className={`text-zinc-800 bg-brands-light hover:bg-zinc-200 w-8  px-2 py-1 rounded-md space-x-2 
+            ${splitExpanded ? "m-0 mb-8" : "mt-3 ml-3 md:m-0 md:mb-8"}`}
           >
             <FontAwesomeIcon
               icon={faRightFromBracket}
@@ -341,7 +353,7 @@ export default function TaskManager() {
 
         <Split
           className="Split flex w-full h-full"
-          sizes={[75, 25]}
+          sizes={isGreaterThanMd ? [75, 25] : [100, 0]}
           minSize={0}
           expandToMin={true}
           gutterSize={12}
@@ -351,94 +363,94 @@ export default function TaskManager() {
         >
           <main className="overflow-hidden flex flex-col gap-3 h-full max-h-screen">
             {/* Text Keyboard */}
-            <div className="flex flex-wrap p-3 bg-brands-light overflow-auto max-h-20 md:max-h-[120px]">
+            <div className="flex flex-wrap p-3 text-sm bg-brands-light overflow-auto max-h-20 md:max-h-[120px]">
               <button
                 onClick={() => execCmd("bold")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faBold} />
               </button>
               <button
                 onClick={() => execCmd("italic")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faItalic} />
               </button>
               <button
                 onClick={() => execCmd("underline")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faUnderline} />
               </button>
               <button
                 onClick={() => execCmd("strikeThrough")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faStrikethrough} />
               </button>
               <button
                 onClick={() => execCmd("removeFormat")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faEraser} />
               </button>
               <button
                 onClick={createLink}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faLink} />
               </button>
               <button
                 onClick={() => execCmd("unlink")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faLinkSlash} />
               </button>
               <button
                 onClick={() => execCmd("insertOrderedList")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faListOl} />
               </button>
               <button
                 onClick={() => execCmd("insertUnorderedList")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faListUl} />
               </button>
               <button
                 onClick={() => execCmd("justifyLeft")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faAlignLeft} />
               </button>
               <button
                 onClick={() => execCmd("justifyCenter")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faAlignCenter} />
               </button>
               <button
                 onClick={() => execCmd("justifyRight")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faAlignRight} />
               </button>
               <button
                 onClick={() => execCmd("justifyFull")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faAlignJustify} />
               </button>
               <button
                 onClick={() => execCmd("indent")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon icon={faIndent} />
               </button>
               <button
                 onClick={() => execCmd("outdent")}
-                className="py-1 px-2 w-10 rounded hover:bg-brands-light"
+                className="w-8 p-1 rounded hover:bg-brands-medium"
               >
                 <FontAwesomeIcon
                   icon={faIndent}
@@ -576,7 +588,7 @@ export default function TaskManager() {
               <div
                 className={`tab-content ${activeTab === "2" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
               >
-                <div className="w-full h-full flex">
+                <div className="h-full min-w-96 w-auto flex flex-wrap whitespace-nowrap overflow-x-auto">
                   <div className="grid grid-cols-3 w-fit h-fit">
                     {arithmeticOperators.map((key, index) => (
                       <button
@@ -603,7 +615,7 @@ export default function TaskManager() {
                     ))}
                   </div>
                   <div className="separator"></div>
-                  <div className="grid grid-cols-6 w-fit h-fit">
+                  <div className="grid grid-cols-4 w-fit h-fit">
                     {geometrySymbols.map((key, index) => (
                       <button
                         key={index}
