@@ -306,12 +306,12 @@ export const geometrySymbols: SymbolGroup[] = [
   { title: "Cotangente", symbol: "cot" },
   { title: "Secante", symbol: "sec" },
   { title: "Cosecante", symbol: "csc" },
-  { title: "Seno inverso", symbol: "sin⁻¹" }, // o 'arcsin'
-  { title: "Coseno inverso", symbol: "cos⁻¹" }, // o 'arccos'
-  { title: "Tangente inversa", symbol: "tan⁻¹" }, // o 'arctan'
-  { title: "Cotangente inversa", symbol: "cot⁻¹" }, // o 'arccot'
-  { title: "Secante inversa", symbol: "sec⁻¹" }, // o 'arcsec'
-  { title: "Cosecante inversa", symbol: "csc⁻¹" }, // o 'arccsc'
+  { title: "Seno inverso", symbol: "sin⁻¹" },
+  { title: "Coseno inverso", symbol: "cos⁻¹" },
+  { title: "Tangente inversa", symbol: "tan⁻¹" },
+  { title: "Cotangente inversa", symbol: "cot⁻¹" },
+  { title: "Secante inversa", symbol: "sec⁻¹" },
+  { title: "Cosecante inversa", symbol: "csc⁻¹" },
 ];
 
 // Logic Symbols

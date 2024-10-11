@@ -247,10 +247,10 @@ export default function TaskManager() {
         </div>
       </dialog>
 
-      <div className="grid grid-cols-[auto_1fr] gap-3 h-screen w-full p-3 text-zinc-800 bg-brands-medium">
+      <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] p-3 pt-14 md:pt-3 gap-3 h-full md:h-screen max-h-full w-full text-zinc-800 bg-brands-medium">
         <nav
-          className={`flex flex-col justify-between bg-brands-medium transition-all ${
-            splitExpanded ? "w-[250px]" : "w-7"
+          className={`absolute top-3 z-10 md:relative flex flex-col justify-between bg-brands-medium transition-all h-full pr-1 pb-3 ${
+            splitExpanded ? "w-[250px]" : "w-0 md:w-7"
           }`}
         >
           <button
@@ -340,7 +340,7 @@ export default function TaskManager() {
         </nav>
 
         <Split
-          className="Split flex w-full"
+          className="Split flex w-full h-full"
           sizes={[75, 25]}
           minSize={0}
           expandToMin={true}
@@ -349,9 +349,9 @@ export default function TaskManager() {
           direction="horizontal"
           cursor="col-resize"
         >
-          <main className="overflow-hidden flex flex-col gap-3 max-h-screen">
+          <main className="overflow-hidden flex flex-col gap-3 h-full max-h-screen">
             {/* Text Keyboard */}
-            <div className="flex flex-wrap p-3 bg-brands-light">
+            <div className="flex flex-wrap p-3 bg-brands-light overflow-auto max-h-20 md:max-h-[120px]">
               <button
                 onClick={() => execCmd("bold")}
                 className="py-1 px-2 w-10 rounded hover:bg-brands-light"
@@ -540,7 +540,7 @@ export default function TaskManager() {
                 type="text"
                 placeholder="Editar título de la tarea"
                 onChange={updateTaskTitle}
-                className="outline-none text-sm text-zinc-500 w-full pb-3"
+                className="outline-none text-sm text-zinc-500 w-full"
               />
               <hr className="w-full my-3" />
               <div
