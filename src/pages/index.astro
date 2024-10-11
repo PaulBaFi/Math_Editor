@@ -1,88 +1,24 @@
 ---
-import GridLayout from "@/layouts/GridLayout.astro";
-import Aside from "@/sections/Aside.astro";
-import Editor from "@/sections/Editor.astro";
-import Others from "@/sections/Others.astro";
+import TaskManager from "@/components/TaskManager";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<GridLayout>
-  <div id="global-grid" class="gap-3 p-3 h-screen bg-brands-medium">
-    <Aside />
-    <main id="main-grid">
-      <Editor />
-      <div class="gutter-col gutter-col-1"></div>
-      <div id="aside-grid">
-        <div class="bg-brands-light">Segunda vista</div>
-        <div class="gutter-row gutter-row-1"></div>
-        <div>
-          <Others />
-        </div>
-      </div>
-    </main>
-  </div>
-</GridLayout>
-
-<style>
-  #global-grid {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-  }
-
-  #main-grid {
-    display: grid;
-    grid-template-columns: 1fr 10px 380px;
-  }
-
-  #aside-grid {
-    display: grid;
-    grid-template-rows: 1fr 10px 1fr;
-  }
-
-  #main-grid > div,
-  #aside-grid > div {
-    overflow: hidden;
-  }
-
-  .gutter-col {
-    grid-row: 1/-1;
-    cursor: col-resize;
-    background-image: url("https://split.js.org/vertical.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-
-  .gutter-col-1 {
-    grid-column: 2;
-  }
-
-  .gutter-row {
-    grid-column: 1/-1;
-    cursor: row-resize;
-    background-image: url("https://split.js.org/horizontal.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-
-  .gutter-row-1 {
-    grid-row: 2;
-  }
-</style>
-
-<script>
-  import Split from "split-grid";
-
-  Split({
-    columnGutters: [
-      {
-        track: 1,
-        element: document.querySelector(".gutter-col-1"),
-      },
-    ],
-    rowGutters: [
-      {
-        track: 1,
-        element: document.querySelector(".gutter-row-1"),
-      },
-    ],
-  });
-</script>
+<BaseLayout>
+{<!-----------------------------
+      `    ``               `
+        ``  _ `      `       ``
+      `   |_| `  `` ``    `  `
+      ``  -___-_` `   ` --------------
+    ``   /      )      | This is fine |`
+  `____/| (0) (0)_()  |/-------------  `
+  /|   | |   ^____)      ``      ``
+  ||   |_|    \_//     Uɔ````   `` ``
+  ||    || |    |    ========`  ``  ``
+  ||    || |    |      ||     ``   `
+  ||     \\_\   |\     ||   ```    `
+  =========||====||    ||  ``       `
+    || ||   \Ɔ || \Ɔ   ||   ``    ``
+    || ||      ||      ||  `     ``
+  --------------------------------->}
+  <TaskManager client:load />
+</BaseLayout>

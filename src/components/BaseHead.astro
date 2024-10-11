@@ -1,39 +1,38 @@
 ---
 interface Props {
-    title: string,
+  title: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
 <head>
-    <!-- Global Metadata -->
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <!-- Fonts Preload -->
-    <link 
-        rel="preload" 
-        href="/fonts/Lato-Bold.ttf" 
-        as="font" 
-        type="font/ttf" 
-        crossorigin 
-    />
-    <link 
-        rel="preload" 
-        href="/fonts/Lato-Regular.ttf" 
-        as="font" 
-        type="font/ttf" 
-        crossorigin 
-    />
-    <link 
-        rel="preload" 
-        href="/fonts/Lato-Light.ttf" 
-        as="font" 
-        type="font/ttf" 
-        crossorigin 
-    />
-    
-    <title>{title}</title>
+  <!-- Global Metadata -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="shortcut icon" href="/logoMathEditor.ico" type="image/x-icon" />
+  <!-- Fonts Preload -->
+  <link
+    rel="preload"
+    href="/fonts/Lato-Bold.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/Lato-Regular.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/Lato-Light.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
+
+  <title>{title}</title>
 </head>

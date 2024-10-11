@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "matheditor",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,10 +11,19 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
     "astro": "^4.15.9",
-    "split-grid": "^1.0.11",
+    "html2canvas": "^1.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-split": "^2.0.14",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2"
   }
 }
+
