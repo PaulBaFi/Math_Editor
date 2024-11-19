@@ -1,53 +1,54 @@
 @font-face {
-    font-family: "Lato";
-    src: url("/fonts/Lato-Bold.ttf");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Lato";
+  src: url("/fonts/Lato-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Lato";
-    src: url("/fonts/Lato-Light.ttf");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Lato";
+  src: url("/fonts/Lato-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Lato";
-    src: url("/fonts/Lato-Regular.ttf");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Lato";
+  src: url("/fonts/Lato-Regular.ttf");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-    --primary: #181818;
-    /* Brands */
-    --brands-light: #ffffff;
-    --brands-medium: #F3F4F6;
-    --brands-bold: #999999;
-    --brands-heavy: #71717A;
+  --primary: #181818;
+  /* Brands */
+  --brands-light: #ffffff;
+  --brands-medium: #f3f4f6;
+  --brands-bold: #999999;
+  --brands-heavy: #71717a;
 }
 
 * {
-    scrollbar-width: none;
+  scrollbar-width: none;
 }
 
 dialog[open] {
-    border: none;
-    padding: 0;
-    scale: 1;
-    transition: scale .3s ease-in-out;
+  border: none;
+  padding: 0;
+  scale: 1;
+  transition: scale 0.3s ease-in-out;
 
-    @starting-style {
-        scale: 0;
-    }
+  @starting-style {
+    scale: 0;
+  }
 }
 
 dialog {
-    transition: scale .3s ease-in-out,
-        display .3s ease-in-out allow-discrete;
-    scale: 0;
+  transition:
+    scale 0.3s ease-in-out,
+    display 0.3s ease-in-out allow-discrete;
+  scale: 0;
 }

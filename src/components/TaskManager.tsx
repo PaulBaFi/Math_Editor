@@ -3,13 +3,12 @@ import {
   arrows,
   fractions,
   doubleStruck,
-  boldFraktur,
   greekAlphabet,
   arithmeticOperators,
   relationalOperators,
   logicalOperators,
   setSymbols,
-  functionSymbols,
+  mathGroupingSymbols,
   algebraSymbols,
   geometrySymbols,
   logicSymbols,
@@ -63,7 +62,7 @@ export default function TaskManager() {
   const [taskToDelete, setTaskToDelete] = useState<number | null>(null);
   const [showAlert, setShowAlert] = useState(false);
   const [saveMessage, setSaveMessage] = useState({ text: "", isError: false });
-  const [activeTab, setActiveTab] = useState("textFormatting");
+  const [activeTab, setActiveTab] = useState("∓");
   const [secondTaskId, setSecondTaskId] = useState<number | null>(null);
   const [secondTaskContent, setSecondTaskContent] = useState("");
   const [splitExpanded, setSplitExpanded] = useState(true);
@@ -363,7 +362,7 @@ export default function TaskManager() {
         >
           <main className="overflow-hidden flex flex-col gap-3 h-full max-h-screen">
             {/* Text Keyboard */}
-            <div className="flex flex-wrap p-3 text-sm bg-brands-light overflow-auto max-h-20 md:max-h-[120px]">
+            <div className="flex flex-wrap p-3 text-sm bg-brands-light overflow-auto max-h-28 md:max-h-32">
               <button
                 onClick={() => execCmd("bold")}
                 className="w-8 p-1 rounded hover:bg-brands-medium"
@@ -568,7 +567,7 @@ export default function TaskManager() {
               className="flex flex-col max-h-80 w-full gap-3 bg-brands-light p-3"
             >
               <div className="tabs flex gap-2 bg-brands-medium p-1 rounded-md">
-                {["1", "2", "3", "4", "5", "6"].map((tab) => (
+                {["∓", "∈", "|x|", "𝔹", "Ψ", "½"].map((tab) => (
                   <div
                     key={tab}
                     className={`tab ${activeTab === tab ? "active" : ""} cursor-pointer py-1 px-3 rounded-md font-semibold`}
@@ -580,13 +579,7 @@ export default function TaskManager() {
               </div>
 
               <div
-                className={`tab-content ${activeTab === "1" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
-              >
-                <div>hoja 1</div>
-              </div>
-
-              <div
-                className={`tab-content ${activeTab === "2" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
+                className={`tab-content ${activeTab === "∓" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
               >
                 <div className="h-full min-w-96 w-auto flex flex-wrap whitespace-nowrap overflow-x-auto">
                   <div className="grid grid-cols-3 w-fit h-fit">
@@ -631,25 +624,135 @@ export default function TaskManager() {
               </div>
 
               <div
-                className={`tab-content ${activeTab === "3" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
+                className={`tab-content ${activeTab === "∈" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
               >
-                <p>Hola 3</p>
+                <div className="h-full min-w-96 w-auto flex flex-wrap whitespace-nowrap overflow-x-auto">
+                  <div className="grid grid-cols-4 w-fit h-fit">
+                    {arrows.map((key, index) => (
+                      <button
+                        key={index}
+                        title={key.title}
+                        onClick={() => insertMathSymbol(`${key.symbol}`)}
+                        className="py-1 w-10 font-medium rounded hover:bg-brands-light"
+                      >
+                        {key.symbol}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="separator"></div>
+                  <div className="grid grid-cols-3 w-fit h-fit">
+                    {setSymbols.map((key, index) => (
+                      <button
+                        key={index}
+                        title={key.title}
+                        onClick={() => insertMathSymbol(`${key.symbol}`)}
+                        className="py-1 w-10 font-medium rounded hover:bg-brands-light"
+                      >
+                        {key.symbol}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="separator"></div>
+                  <div className="grid grid-cols-3 w-fit h-fit">
+                    {logicalOperators.map((key, index) => (
+                      <button
+                        key={index}
+                        title={key.title}
+                        onClick={() => insertMathSymbol(`${key.symbol}`)}
+                        className="py-1 w-10 font-medium rounded hover:bg-brands-light"
+                      >
+                        {key.symbol}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div
-                className={`tab-content ${activeTab === "4" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
+                className={`tab-content ${activeTab === "|x|" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
               >
-                <p>hoja 4</p>
+                <div className="h-full min-w-96 w-auto flex flex-wrap whitespace-nowrap overflow-x-auto">
+                  <div className="grid grid-cols-3 w-fit h-fit">
+                    {algebraSymbols.map((key, index) => (
+                      <button
+                        key={index}
+                        title={key.title}
+                        onClick={() => insertMathSymbol(`${key.symbol}`)}
+                        className="py-1 w-10 font-medium rounded hover:bg-brands-light"
+                      >
+                        {key.symbol}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="separator"></div>
+                  <div className="grid grid-cols-3 w-fit h-fit">
+                    {logicalOperators.map((key, index) => (
+                      <button
+                        key={index}
+                        title={key.title}
+                        onClick={() => insertMathSymbol(`${key.symbol}`)}
+                        className="py-1 w-10 font-medium rounded hover:bg-brands-light"
+                      >
+                        {key.symbol}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="separator"></div>
+                  <div className="grid grid-cols-2 w-fit h-fit">
+                    {mathGroupingSymbols.map((key, index) => (
+                      <button
+                        key={index}
+                        title={key.title}
+                        onClick={() => insertMathSymbol(`${key.symbol}`)}
+                        className="py-1 w-10 font-medium rounded hover:bg-brands-light"
+                      >
+                        {key.symbol}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div
-                className={`tab-content ${activeTab === "5" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
+                className={`tab-content ${activeTab === "𝔹" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
               >
-                <p>hoja 5</p>
+                <div className="h-full min-w-96 w-auto flex flex-wrap whitespace-nowrap overflow-x-auto">
+                  <div className="grid grid-cols-7 w-fit h-fit">
+                    {doubleStruck.map((key, index) => (
+                      <button
+                        key={index}
+                        title={key.title}
+                        onClick={() => insertMathSymbol(`${key.symbol}`)}
+                        className="py-1 w-10 font-medium rounded hover:bg-brands-light"
+                      >
+                        {key.symbol}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div
-                className={`tab-content ${activeTab === "6" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
+                className={`tab-content ${activeTab === "Ψ" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
+              >
+                <div className="h-full min-w-96 w-auto flex flex-wrap whitespace-nowrap overflow-x-auto">
+                  <div className="grid grid-cols-8 w-fit h-fit">
+                    {greekAlphabet.map((key, index) => (
+                      <button
+                        key={index}
+                        title={key.title}
+                        onClick={() => insertMathSymbol(`${key.symbol}`)}
+                        className="py-1 w-10 font-medium rounded hover:bg-brands-light"
+                      >
+                        {key.symbol}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`tab-content ${activeTab === "½" ? "active" : ""} bg-brands-medium p-1 rounded-md min-h-20`}
               >
                 <div className="h-full w-full flex">
                   <div className="grid grid-cols-6 w-fit h-fit">
@@ -737,6 +840,7 @@ export default function TaskManager() {
                   onInput={(e) =>
                     setSecondTaskContent(e.currentTarget.innerHTML)
                   }
+                  dangerouslySetInnerHTML={{ __html: secondTaskContent }}
                   className="outline-none mb-3"
                 />
                 <button
